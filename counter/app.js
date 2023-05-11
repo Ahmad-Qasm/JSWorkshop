@@ -1,9 +1,20 @@
-const increase_btn = document.querySelector("btn increase");
-const reset_btn = document.querySelector("btn reset");
-const decrease_btn = document.querySelector("btn decrease");
+const btns = document.body.querySelectorAll(".btn ");
+const value = document.getElementById("value");
+let count = 0;
 
-increase_btn.addEventListener("click", function () {
-  const i = 1;
-  const value = document.querySelector("#value");
-  value.textContent = i;
+btns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (btn.innerText == "INCREASE") {
+      count++;
+    } else if (btn.innerText == "DECREASE") {
+      count--;
+    } else {
+      count = 0;
+    }
+
+    if (count > 0) value.style.color = "green";
+    if (count < 0) value.style.color = "red";
+    if (count == 0) value.style.color = "#222";
+    value.textContent = count;
+  });
 });
